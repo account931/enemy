@@ -8,6 +8,7 @@
   width: 310px;
   height: 19px;
   margin: 17px;
+  display: inline-block;/*mine*/
 }
 
 .thumb {
@@ -47,3 +48,14 @@ transform:rotate(360deg);
 .enemy{position:absolute;top:29%;left:0%;  width:18%;-webkit-transition: all 0.6s ease; }      /*realised  in JQuery;*/
 .enemy img {width:65%;-webkit-transition: all 0.6s ease; }
 .enemy :hover{ transform: scale(1.6);}
+
+/*Stop Button*/
+#stop{display: inline-block;width:3%;}
+#stop img{width:90%;-webkit-transition: all 0.6s ease;}
+#stop :hover{ transform: scale(1.4);cursor:pointer;}
+
+
+/*Reload Button*/
+#reload{display: inline-block;width:3%;}
+#reload img{width:99%;-webkit-transition: all 0.6s ease;}
+#reload :hover{ transform: scale(1.4);cursor:pointer;}

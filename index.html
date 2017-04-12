@@ -12,9 +12,15 @@
 
 <body>
 
-  <div id="slider" class="slider">
-    <div class="thumb"></div>
+  <div id="slider" class="slider" >
+    <div class="thumb">  </div> 
   </div>
+  
+<div id ="stop" ><img src="images/stop.png" /></div>
+
+<div id ="reload" ><img src="images/reload.ico" /></div>
+
+
 
 
 
@@ -58,7 +64,8 @@
   <script>
 var  leftX; //global  position  for  moved  object
 var  topX;
-//START WAZE MOVE
+
+//START Elemenent MOVE
     // ...
 var ball = document.getElementById('ball');
 
@@ -93,7 +100,8 @@ ball.onmousedown = function(e) { // 1. detect mouse  press
   }
 
   // 3, move  on the  screen
-  document.onmousemove = function(e) {
+  document.onmousemove = function(e) { 
+    myfuctXXX(); //   moved  here  my  function   from "{ball.onmouseup = function() {}"  to  enable  it  chasing  the  target always------------------------
     moveAt(e);
   }
 
@@ -101,7 +109,7 @@ ball.onmousedown = function(e) { // 1. detect mouse  press
   ball.onmouseup = function() {
     document.onmousemove = null;
     ball.onmouseup = null; 
-         myfuctXXX(); //mine launc  JQ
+       //  myfuctXXX(); //mine launc  JQ  -it  chases  the  target , but  only after mouse  up 
   }
 }
 

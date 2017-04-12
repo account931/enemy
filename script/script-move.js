@@ -34,16 +34,35 @@ $(".enemy").offset({top:posoffset.top,left:posoffset.left});
 // **************************************************************************************
 // **************************************************************************************
 //                                                                                     ** 
-// Reset   enemies   while  touching  the  slider -------------------------------------
-    $("#slider").click(function(){
+// Reset   enemies   while  clicking  the  STOP button-------------------------------------
+    $("#stop").click(function(){
                          var posoffset = $("#ballS").offset();  //alert(posoffset.top);
                          $(".enemy").offset({top:posoffset.top,left:posoffset.left});      
     });
-// End Reset   enemies   while  touching  the  slider ---------------------------------
+// End Reset   enemies   while  clicking  the  STOP button--------------------------------
 
 // **                                                                                  **
 // **************************************************************************************
 // **************************************************************************************
+
+
+
+
+
+// **************************************************************************************
+// **************************************************************************************
+//                                                                                     ** 
+// Reload  page clicking  the  REload button-------------------------------------
+    $("#reload").click(function(){
+          location.reload();               
+    });
+// End Reload  page clicking  the  REload button- ---------------------------------
+
+// **                                                                                  **
+// **************************************************************************************
+// **************************************************************************************
+
+
 
 
 
@@ -77,7 +96,7 @@ $(".enemy").offset({top:topX,left:leftX});  //alert(topX+'---'+leftX);
   $(".enemy").eq(i).animate({  //eq(i)==[i]
           top: topX,left:leftX
        /* top: "-=30px",left:"99px;"*/
-                            }, 1000-300);
+                            }, -1000/*-((i+2)*300)*/);   //setting negarive  time  forces  it  move   more  energetic
 
   } //  end  for 
 }//end  function
