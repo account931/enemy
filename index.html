@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="style.css">
+<title>Drag'n'run</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="script/script-move.js"></script>
+</head>
+
+<body>
+
+  <div id="slider" class="slider">
+    <div class="thumb"></div>
+  </div>
+
+
+
+
+<!--MOVE START-->
+<div id="ballS"  style="position:absolute; top:75px;left:87px;">
+<img src="images/target.png"  id="ball"/>
+</div>
+<!--MOVE START-->
+
+
+<!-- Enemy-->
+<div id="" class="enemy"  style="position:absolute; top:75px;right:87px;width100px;-webkit-transition: all 5.6s ease;">
+<img src="images/enemy.png"  id="" style="width:25%;"/>
+</div>
+<!-- Enemy-->
+
+
+<!-- Enemy-->
+<div id="" class="enemy"  style="position:absolute; top:75px;left:487px;width100px;-webkit-transition: all 5.6s ease;">
+<img src="images/enemy.png"  id="" style="width:25%;"/>
+</div>
+<!-- Enemy-->
+
+
+<!-- Enemy-->
+<div id="" class="enemy"  style="position:absolute; top:75px;left:987px;width100px;-webkit-transition: all 5.6s ease;">
+<img src="images/enemy.png"  id="" style="width:25%;"/>
+</div>
+<!-- Enemy-->
+
+
+
+<!-- Enemy-->
+<div id="" class="enemy"  style="position:absolute; bottom:-475px;left:987px;width100px;-webkit-transition: all 5.6s ease;">
+<img src="images/enemy.png"  id="" style="width:25%;"/>
+</div>
+<!-- Enemy-->
+
+
+  <script>
+var  leftX; //global  position  for  moved  object
+var  topX;
+//START WAZE MOVE
+    // ...
+var ball = document.getElementById('ball');
+
+//Avoid  Copying 
+ball.ondragstart = function() {
+  return false;
+};
+
+ball.onmousedown = function(e) { // 1. отследить нажатие
+
+
+
+  // подготовить к перемещению
+  // 2. разместить на том же месте, но в абсолютных координатах
+  ball.style.position = 'absolute';
+  moveAt(e);
+  // переместим в body, чтобы мяч был точно не внутри position:relative
+  document.body.appendChild(ball);
+
+  ball.style.zIndex = 1000; // показывать мяч над другими элементами
+
+  // передвинуть мяч под координаты курсора
+  // и сдвинуть на половину ширины/высоты для центрирования
+  function moveAt(e) {
+//mine-------
+		window.leftX= e.pageX - ball.offsetWidth / 2 + 'px';
+		window.topX= e.pageY - ball.offsetHeight / 2 + 'px';
+//end  mine--
+    ball.style.left = e.pageX - ball.offsetWidth / 2 + 'px';
+    ball.style.top = e.pageY - ball.offsetHeight / 2 + 'px';
+
+  }
+
+  // 3, перемещать по экрану
+  document.onmousemove = function(e) {
+    moveAt(e);
+  }
+
+  // 4. отследить окончание переноса
+  ball.onmouseup = function() {
+    document.onmousemove = null;
+    ball.onmouseup = null; 
+         myfuctXXX(); //mine launc  JQ
+  }
+}
+
+
+//ENDS WAZE MOVE ---------------------------------
+
+
+
+
+
+
+
+
+
+//ProgeressBar------------------------
+function fixEvent(e) {
+  e = e || window.event;
+
+  if (!e.target) e.target = e.srcElement;
+
+  if (e.pageX === null && e.clientX !== null ) { // если нет pageX..
+    var html = document.documentElement;
+    var body = document.body;
+
+    e.pageX = e.clientX + (html.scrollLeft || body && body.scrollLeft || 0);
+    e.pageX -= html.clientLeft || 0;
+
+    e.pageY = e.clientY + (html.scrollTop || body && body.scrollTop || 0);
+    e.pageY -= html.clientTop || 0;
+  }
+
+  if (!e.which && e.button) {
+    e.which = e.button & 1 ? 1 : ( e.button & 2 ? 3 : ( e.button & 4 ? 2 : 0 ) );
+  }
+
+  return e;
+}
+
+
+function getCoords(elem) {
+    var box = elem.getBoundingClientRect();
+
+    var body = document.body;
+    var docElem = document.documentElement;
+
+    var scrollTop = window.pageYOffset || docElem.scrollTop || body.scrollTop;
+    var scrollLeft = window.pageXOffset || docElem.scrollLeft || body.scrollLeft;
+
+    var clientTop = docElem.clientTop || body.clientTop || 0;
+    var clientLeft = docElem.clientLeft || body.clientLeft || 0;
+
+    var top  = box.top +  scrollTop - clientTop;
+    var left = box.left + scrollLeft - clientLeft;
+
+    return { top: Math.round(top), left: Math.round(left) };
+}
+
+var sliderElem = document.body.children[0];
+var thumbElem = sliderElem.children[0];
+
+  slider.onmousedown = function(e) {
+          e = fixEvent(e);
+
+          var thumbCoords = getCoords(thumbElem);
+          var sliderCoords = getCoords(sliderElem);
+          var shiftX = e.pageX - thumbCoords.left;
+
+   
+          document.onmousemove = function(e) {
+            e = fixEvent(e);
+              
+            var left = e.pageX - shiftX;
+            if (left < sliderCoords.left) {
+                left = sliderCoords.left;
+            } else if (left > sliderCoords.left + sliderElem.offsetWidth - shiftX) {
+                left = sliderCoords.left + sliderElem.offsetWidth - shiftX;
+            }
+            thumbElem.style.left = left + 'px';
+  };
+
+  document.onmouseup = function() {
+    document.onmousemove = document.onmouseup = null;
+  };
+
+  return false;
+};
+
+//END PROGRESSBAR--------------------
+  </script>
+
+</body>
+
+</html>

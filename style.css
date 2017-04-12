@@ -1,0 +1,49 @@
+/*PROGRESSBAR STARTS*/
+.slider {
+  border-radius: 7px;
+  background:  red;//#E0E0E0;
+  background: -moz-linear-gradient(left top, #E0E0E0, #EEEEEE) repeat scroll 0 0 transparent;
+  background: -webkit-gradient(linear, left top, right bottom, from(#E0E0E0), to(#EEEEEE));
+  background: linear-gradient(left top, #E0E0E0, #EEEEEE);
+  width: 310px;
+  height: 19px;
+  margin: 17px;
+}
+
+.thumb {
+  width: 10px;
+  height: 25px;
+  border-radius: 3px;
+  position: relative;
+  left: 10px;
+  top: -3px;
+  background: blue;
+  cursor: pointer;
+}
+
+/* PROGRESSBAR ENDS*/
+
+
+
+/* WAZE PIC HOVER ENLARGE*/
+#ballS :hover {-webkit-transition-duration:0.5s;
+transform:rotate(360deg);
+-ms-transform: rotate(360deg); 
+-webkit-transform: rotate(360deg);
+/*scale(1.2,1.2);
+-ms-transform: scale(1.2,1.2); 
+-webkit-transform: scale(2,2); //scale(1.2,1.2)*/}
+
+#ballS{ all 3s linear;transition: all3 s linear;-moz-transition: all 1s linear;-o-transition: all 1s linear;}
+#ballS img {-webkit-transition: all 0.6s ease; }
+/* WAZE PICTURE  HOVER ENLARGE ENDS */
+
+
+
+.enemy{all 3s linear;transition: all3 s linear;-moz-transition: all 1s linear;-o-transition: all 1s linear;}
+
+
+
+.enemy{position:absolute;top:29%;left:0%;  width:18%;-webkit-transition: all 0.6s ease; }      /*realised  in JQuery;*/
+.enemy img {width:65%;-webkit-transition: all 0.6s ease; }
+.enemy :hover{ transform: scale(1.6);}
